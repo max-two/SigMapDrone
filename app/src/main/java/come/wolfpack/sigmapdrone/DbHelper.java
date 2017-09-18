@@ -5,13 +5,16 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.File;
+import java.io.FileWriter;
+
 /**
  * Created by max on 9/13/17.
  */
 
 public class DbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "SigMap.db";
 
     private static final String SQL_CREATE_TABLE =
@@ -51,6 +54,6 @@ public class DbHelper extends SQLiteOpenHelper {
         contentValues.put(DbContract.Entry.COLUMN_Y, "0");
         contentValues.put(DbContract.Entry.COLUMN_Z, "0");
 
-        db.insert("contacts", null, contentValues);
+        db.insert(DbContract.Entry.TABLE_NAME, null, contentValues);
     }
 }
