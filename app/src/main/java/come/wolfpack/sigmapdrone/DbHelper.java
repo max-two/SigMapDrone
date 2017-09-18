@@ -1,5 +1,6 @@
 package come.wolfpack.sigmapdrone;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -18,11 +19,10 @@ public class DbHelper extends SQLiteOpenHelper {
                     DbContract.Entry._ID + " INTEGER PRIMARY KEY," +
                     DbContract.Entry.COLUMN_TIME + " NUMERIC," +
                     DbContract.Entry.COLUMN_WIFI + " REAL," +
-                    DbContract.Entry.COLUMN_LTE + " REAL)" +
-                    DbContract.Entry.COLUMN_X + " INTEGER)" +
-                    DbContract.Entry.COLUMN_Y + " INTEGER)" +
+                    DbContract.Entry.COLUMN_LTE + " REAL," +
+                    DbContract.Entry.COLUMN_X + " INTEGER," +
+                    DbContract.Entry.COLUMN_Y + " INTEGER," +
                     DbContract.Entry.COLUMN_Z + " INTEGER)";
-
 
     private static final String SQL_DELETE_TABLE =
             "DROP TABLE IF EXISTS " + DbContract.Entry.TABLE_NAME;
@@ -36,9 +36,21 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
         db.execSQL(SQL_DELETE_TABLE);
         onCreate(db);
+    }
+
+    public void insertSignal(int signal) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DbContract.Entry.COLUMN_TIME, "00:00");
+        contentValues.put(DbContract.Entry.COLUMN_WIFI, signal);
+        contentValues.put(DbContract.Entry.COLUMN_LTE, "0");
+        contentValues.put(DbContract.Entry.COLUMN_X, "0");
+        contentValues.put(DbContract.Entry.COLUMN_Y, "0");
+        contentValues.put(DbContract.Entry.COLUMN_Z, "0");
+
+        db.insert("contacts", null, contentValues);
     }
 }

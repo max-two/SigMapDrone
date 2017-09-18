@@ -12,7 +12,7 @@ public class WifiHelper {
 
     WifiManager wifiManager;
 
-    public WifiHelper (Context context) {
+    public WifiHelper(Context context) {
 
         //  TODO: Check if wifi is enabled
 
@@ -23,12 +23,12 @@ public class WifiHelper {
         wifiLock.acquire();
     }
 
-    String getSSID () {
+    String getSSID() {
         WifiInfo wifi_info = wifiManager.getConnectionInfo();
         return wifi_info.getSSID();
     }
 
-    int getRSSI () {
+    int getRSSI() {
         WifiInfo wifi_info = wifiManager.getConnectionInfo();
         return wifi_info.getRssi();
     }
