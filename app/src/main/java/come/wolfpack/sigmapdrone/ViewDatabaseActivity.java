@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class ViewDatabaseActivity extends AppCompatActivity {
 
         while(cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndexOrThrow(DbContract.Entry._ID));
-            int time = cursor.getInt(cursor.getColumnIndexOrThrow(DbContract.Entry.COLUMN_TIME));
+            String time = cursor.getString(cursor.getColumnIndexOrThrow(DbContract.Entry.COLUMN_TIME));
             int wifi = cursor.getInt(cursor.getColumnIndexOrThrow(DbContract.Entry.COLUMN_WIFI));
             ids.add(id);
             columnTime.add(time);
@@ -56,23 +57,46 @@ public class ViewDatabaseActivity extends AppCompatActivity {
 
         TableLayout tbl = (TableLayout)findViewById(R.id.RHE);
 
+        TableRow titleRow = new TableRow(this);
+
+        TextView titleId = new TextView(this);
+        titleId.setText("ID");
+        titleId.setPadding(50, 0, 0, 50);
+        titleRow.addView(titleId);
+
+        TextView titleTime = new TextView(this);
+        titleTime.setText("Time");
+        titleTime.setPadding(50, 0, 0, 50);
+        titleRow.addView(titleTime);
+
+        TextView titleWifi = new TextView(this);
+        titleWifi.setText("Wifi");
+        titleWifi.setPadding(50, 0, 0, 50);
+        titleRow.addView(titleWifi);
+
+        tbl.addView(titleRow);
+
         for (int i = 0; i < columnTime.size(); i++) {
             TableRow newRow = new TableRow(this);
 
             TextView txtId = new TextView(this);
             txtId.setText(ids.get(i).toString());
-            txtId.setPadding(5, 0, 0, 0);
+            txtId.setPadding(50, 0, 0, 0);
             newRow.addView(txtId);
             TextView txtA = new TextView(this);
             txtA.setText(columnTime.get(i).toString());
-            txtA.setPadding(5, 0, 0, 0);
+            txtA.setPadding(50, 0, 0, 0);
             newRow.addView(txtA);
             TextView txtB = new TextView(this);
             txtB.setText(columnWifi.get(i).toString());
-            txtB.setPadding(5, 0, 0, 0);
+            txtB.setPadding(50, 0, 0, 0);
             newRow.addView(txtB);
 
             tbl.addView(newRow);
         }
+    }
+
+    public void deleteDb(View view) {
+        this.deleteDatabase(DbHelper.DATABASE_NAME);
     }
 }

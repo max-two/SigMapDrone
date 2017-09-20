@@ -5,8 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.io.File;
-import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by max on 9/13/17.
@@ -20,7 +21,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE =
             "CREATE TABLE " + DbContract.Entry.TABLE_NAME + " (" +
                     DbContract.Entry._ID + " INTEGER PRIMARY KEY," +
-                    DbContract.Entry.COLUMN_TIME + " NUMERIC," +
+                    DbContract.Entry.COLUMN_TIME + " TEXT," +
                     DbContract.Entry.COLUMN_WIFI + " REAL," +
                     DbContract.Entry.COLUMN_LTE + " REAL," +
                     DbContract.Entry.COLUMN_X + " INTEGER," +
@@ -46,8 +47,12 @@ public class DbHelper extends SQLiteOpenHelper {
     public void insertSignal(int signal) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        SimpleDateFormat src = new SimpleDateFormat("HH:mm:ss");
+        Date time = Calendar.getInstance().getTime();
+        String timestamp = src.format(time);
+
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DbContract.Entry.COLUMN_TIME, "00:00");
+        contentValues.put(DbContract.Entry.COLUMN_TIME, timestamp);
         contentValues.put(DbContract.Entry.COLUMN_WIFI, signal);
         contentValues.put(DbContract.Entry.COLUMN_LTE, "0");
         contentValues.put(DbContract.Entry.COLUMN_X, "0");
