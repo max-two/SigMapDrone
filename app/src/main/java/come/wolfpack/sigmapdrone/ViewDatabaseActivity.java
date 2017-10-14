@@ -33,7 +33,6 @@ public class ViewDatabaseActivity extends AppCompatActivity {
 
         verifyStoragePermissions(this);
 
-
         File backupDB = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                 "SigMap.db"); // for example "my_data_backup.db"
         File currentDB = getApplicationContext().getDatabasePath("SigMap.db");

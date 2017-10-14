@@ -23,7 +23,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     DbContract.Entry._ID + " INTEGER PRIMARY KEY," +
                     DbContract.Entry.COLUMN_TIME + " TEXT," +
                     DbContract.Entry.COLUMN_WIFI + " REAL," +
-                    DbContract.Entry.COLUMN_LTE + " REAL," +
+                    DbContract.Entry.COLUMN_LTE + " TEXT," +
                     DbContract.Entry.COLUMN_X + " INTEGER," +
                     DbContract.Entry.COLUMN_Y + " INTEGER," +
                     DbContract.Entry.COLUMN_Z + " INTEGER)";
@@ -44,7 +44,7 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertSignal(int signal) {
+    public void insertSignal(int signal, String cell) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         SimpleDateFormat src = new SimpleDateFormat("HH:mm:ss");
@@ -54,7 +54,7 @@ public class DbHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DbContract.Entry.COLUMN_TIME, timestamp);
         contentValues.put(DbContract.Entry.COLUMN_WIFI, signal);
-        contentValues.put(DbContract.Entry.COLUMN_LTE, "0");
+        contentValues.put(DbContract.Entry.COLUMN_LTE, cell);
         contentValues.put(DbContract.Entry.COLUMN_X, "0");
         contentValues.put(DbContract.Entry.COLUMN_Y, "0");
         contentValues.put(DbContract.Entry.COLUMN_Z, "0");

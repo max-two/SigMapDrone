@@ -14,6 +14,7 @@ public class CollectionThread implements Runnable {
     private Thread thread;
     private static DbHelper dbHelper;
     private static WifiHelper wifiHelper;
+    private static CellHelper cellHelper;
 
     private static PowerManager pm;
     private static PowerManager.WakeLock wl;
@@ -21,6 +22,7 @@ public class CollectionThread implements Runnable {
     public CollectionThread(Context context) {
         this.dbHelper = new DbHelper(context);
         this.wifiHelper = new WifiHelper(context);
+        this.cellHelper = new CellHelper(context);
 
         this.pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
         this.wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
@@ -57,6 +59,8 @@ public class CollectionThread implements Runnable {
 
     public void collectWifi () {
         int rssi = wifiHelper.getRSSI();
-        dbHelper.insertSignal(rssi);
+        String cell = cellHelper.getCellData();
+
+        dbHelper.insertSignal(rssi, cell);
     }
 }
