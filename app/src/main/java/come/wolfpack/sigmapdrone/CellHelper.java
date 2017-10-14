@@ -27,9 +27,9 @@ public class CellHelper {
         cellManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
     }
 
-    public String getCellData() {
+    public CellData getCellData() {
         List<CellInfo> ci = cellManager.getAllCellInfo();
-        String strength = "";
+        CellData cellData = new CellData();
 
         if(ci != null){
             for (int i = 0; i < ci.size(); i++) {
@@ -38,19 +38,19 @@ public class CellHelper {
                 if (ci.get(i) instanceof CellInfoWcdma){
                     CellInfoWcdma cellInfoWcdma = (CellInfoWcdma) ci.get(i);
                     CellSignalStrengthWcdma cellSignalStrengthWcdma = cellInfoWcdma.getCellSignalStrength();
-                    strength = String.valueOf(cellSignalStrengthWcdma.getDbm());
+                    cellData.setCdma(String.valueOf(cellSignalStrengthWcdma.getDbm()));
                 } else if (ci.get(i) instanceof CellInfoGsm){
                     CellInfoGsm cellInfogsm = (CellInfoGsm) ci.get(i);
                     CellSignalStrengthGsm cellSignalStrengthGsm = cellInfogsm.getCellSignalStrength();
-                    strength = String.valueOf(cellSignalStrengthGsm.getDbm());
+                    cellData.setGsm(String.valueOf(cellSignalStrengthGsm.getDbm()));
                 } else if (ci.get(i) instanceof CellInfoLte){
                     CellInfoLte cellInfoLte = (CellInfoLte) ci.get(i);
                     CellSignalStrengthLte cellSignalStrengthLte = cellInfoLte.getCellSignalStrength();
-                    strength = String.valueOf(cellSignalStrengthLte.getDbm());
+                    cellData.setLte(String.valueOf(cellSignalStrengthLte.getDbm()));
                 }
             }
         }
 
-        return strength;
+        return cellData;
     }
 }

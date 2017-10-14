@@ -44,7 +44,7 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertSignal(int signal, String cell) {
+    public void insertSignal(int signal, CellData cell) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         SimpleDateFormat src = new SimpleDateFormat("HH:mm:ss");
@@ -54,7 +54,7 @@ public class DbHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DbContract.Entry.COLUMN_TIME, timestamp);
         contentValues.put(DbContract.Entry.COLUMN_WIFI, signal);
-        contentValues.put(DbContract.Entry.COLUMN_LTE, cell);
+        contentValues.put(DbContract.Entry.COLUMN_LTE, cell.getLte());
         contentValues.put(DbContract.Entry.COLUMN_X, "0");
         contentValues.put(DbContract.Entry.COLUMN_Y, "0");
         contentValues.put(DbContract.Entry.COLUMN_Z, "0");

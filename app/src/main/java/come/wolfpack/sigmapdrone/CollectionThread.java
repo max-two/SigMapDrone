@@ -59,7 +59,7 @@ public class CollectionThread implements Runnable {
 
     public void collectWifi () {
         int rssi = wifiHelper.getRSSI();
-        String cell = cellHelper.getCellData();
+        CellData cell = cellHelper.getCellData();
 
         dbHelper.insertSignal(rssi, cell);
     }
