@@ -14,6 +14,8 @@ public final class DbContract {
         public static final String COLUMN_TIME = "time";
         public static final String COLUMN_WIFI = "wifi";
         public static final String COLUMN_LTE = "lte";
+        public static final String COLUMN_CDMA = "cdma";
+        public static final String COLUMN_GSM = "gsm";
         public static final String COLUMN_X = "x";
         public static final String COLUMN_Y = "y";
         public static final String COLUMN_Z = "z";

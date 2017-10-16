@@ -60,7 +60,10 @@ public class CollectionThread implements Runnable {
     public void collectWifi () {
         int rssi = wifiHelper.getRSSI();
         CellData cell = cellHelper.getCellData();
+        String lte = cell.getLte();
+        String cdma = cell.getCdma();
+        String gsm = cell.getGsm();
 
-        dbHelper.insertSignal(rssi, cell);
+        dbHelper.insertSignal(rssi, lte, cdma, gsm);
     }
 }
