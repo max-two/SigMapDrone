@@ -94,8 +94,12 @@ public class MainActivity extends AppCompatActivity {
 //        }, delay);
 //    }
 
-    public void viewDatabase(View view) {
-        Intent intent = new Intent(this, ViewDatabaseActivity.class);
-        startActivity(intent);
+    public void exportDb(View view) {
+        DbHelper dbHelper = new DbHelper(this);
+        dbHelper.export();
+    }
+
+    public void deleteDb(View view) {
+        this.deleteDatabase(DbHelper.DATABASE_NAME);
     }
 }
