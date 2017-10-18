@@ -80,6 +80,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public void export() {
 
+        FbHelper fbHelper = new FbHelper();
+        fbHelper.writeData();
+
         File backupDB = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                 "SigMap.db"); // for example "my_data_backup.db"
         File currentDB = context.getDatabasePath("SigMap.db");

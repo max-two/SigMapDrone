@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "981561100419",
+    "firebase_url": "https://sigmapdrone.firebaseio.com",
+    "project_id": "sigmapdrone",
+    "storage_bucket": "sigmapdrone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981561100419:android:b27accb4d4468cbf",
+        "android_client_info": {
+          "package_name": "come.wolfpack.sigmapdrone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981561100419-jjcfvsom0laisupivepvle3ekm212mnu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "come.wolfpack.sigmapdrone",
+            "certificate_hash": "4be9883608b5f5991871eed43d16005e8df5c04b"
+          }
+        },
+        {
+          "client_id": "981561100419-jjq9ak9j4blbqd60doc2ac5ocjduf6av.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4B6jl-ri-2bZczA6rPogqt4IDt6UDd3A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981561100419-jjq9ak9j4blbqd60doc2ac5ocjduf6av.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
