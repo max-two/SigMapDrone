@@ -49,7 +49,7 @@ public class CollectionThread implements Runnable {
         try {
             Log.i(TAG, "Thread starting.");
             while( !thread.interrupted() ) {
-                collectWifi();
+                collectSignals();
             }
             Log.i(TAG, "Thread stopping.");
         } finally {
@@ -57,7 +57,7 @@ public class CollectionThread implements Runnable {
         }
     }
 
-    public void collectWifi () {
+    public void collectSignals () {
         int rssi = wifiHelper.getRSSI();
         CellData cell = cellHelper.getCellData();
         String lte = cell.getLte();

@@ -10,11 +10,7 @@ public class CellData {
     String gsm;
 
 
-    public CellData() {
-        this.lte = "N/A";
-        this.cdma = "N/A";
-        this.gsm = "N/A";
-    }
+    public CellData() {}
 
     public String getLte() {
         return lte;
