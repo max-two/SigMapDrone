@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         return context;
     }
 
+    public void usb(View view) {
+
+    }
+
     public void collectWifi (View view) {
 
         Button button = (Button)findViewById(R.id.button);
