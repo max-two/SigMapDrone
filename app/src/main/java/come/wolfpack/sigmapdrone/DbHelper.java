@@ -81,7 +81,18 @@ public class DbHelper extends SQLiteOpenHelper {
     public void export() {
 
         FbHelper fbHelper = new FbHelper();
-        fbHelper.writeData();
+
+        // Hardcoding some random values for use by the UI subsystem
+        // After integration with location detection these should obviously be pulled from the DB
+
+        for (int i = 0; i < 250; i++) {
+            int x = (int)(Math.random() * 1000);
+            int y = (int)(Math.random() * 1000);
+            int wifi = (int)(Math.random() * 50 + 30);
+            int lte = (int)(Math.random() * 50 + 70);
+
+            fbHelper.writeData(x, y, wifi, lte);
+        }
 
         File backupDB = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                 "SigMap.db"); // for example "my_data_backup.db"

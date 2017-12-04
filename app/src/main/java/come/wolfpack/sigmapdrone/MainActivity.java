@@ -2,6 +2,8 @@ package come.wolfpack.sigmapdrone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.icu.util.Calendar;
 import android.os.Handler;
 import android.os.PowerManager;
@@ -14,6 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static Context getContext() {
         return context;
-    }
-
-    public void usb(View view) {
-
     }
 
     public void collectWifi (View view) {

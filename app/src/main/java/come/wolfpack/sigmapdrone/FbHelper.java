@@ -15,7 +15,14 @@ public class FbHelper {
         database = FirebaseDatabase.getInstance().getReference();
     }
 
-    public void writeData() {
-        database.push().setValue("testing");
+    public void writeData(int x, int y, int wifi, int lte) {
+        Coordinate coor = new Coordinate();
+
+        coor.setX(x);
+        coor.setY(y);
+        coor.setWifi(wifi);
+        coor.setLte(lte);
+
+        database.push().setValue(coor);
     }
 }
